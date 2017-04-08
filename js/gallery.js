@@ -37,8 +37,20 @@ function swapPhoto() {
 	//Access the img element and replace its source
 	//with a new image from your images array which is loaded 
 	//from the JSON string
-	var myPhoto = document.getElementById("slideshow");
-	document.getElementsByClassName("thumbnail").src = mImages[mCurrentIndex].img;
+	var mySlide = document.getElementById("slideshow");
+	var tempImage = mImages[mCurrentIndex].img
+	document.getElementById("photo").src = tempImage;
+	//var myImg = mySlide.getElementbyId("src");
+	//var mySrc = myImg.src;
+	//myImg = tempImage;
+	if(mCurrentIndex < mImages.length - 1)
+	{
+		mCurrentIndex++;
+	}
+	else
+	{
+		mCurrentIndex = 0;
+	}
 	console.log('swap photo');
 }
 
@@ -64,13 +76,9 @@ mRequest.onreadystatechange = function() {
 			mJson = JSON.parse(mRequest.responseText);
 			
 				for(var i = 0; i < mJson.images.length; i++){
-				//var b = new GalleryImage();
-				//b.location = mJson.images[i].imgLocation;
-				//b.description = mJson.images[i].description;
-				//b.date = mJson.images[i].date;
-				//b.img = mJson.images[i].imgPath;
 				mImages.push(new GalleryImage(mJson.images[i].imgLocation, mJson.images[i].description, mJson.images[i].date, mJson.images[i].imgPath));
 				}
+			console.log(mImages.length);
 			console.log(mJson);
 		} catch(err) {
 			console.log(err.message);
