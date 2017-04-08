@@ -105,12 +105,14 @@ $(document).ready( function() {
 		{
 			$(".moreIndicator").removeClass("rot90");
 			$(".moreIndicator").addClass("rot270");
+
 		}
 		else
 		{
 			$(".moreIndicator").removeClass("rot270");
 			$(".moreIndicator").addClass("rot90");
 		}
+		$('.details').fadeToggle("slow", "linear");
 	});
 });
 
@@ -119,20 +121,6 @@ window.addEventListener('load', function() {
 	console.log('window loaded');
 
 }, false);
-//$('#prevPhoto').click(function(){
-		//console.log ('Howdy partner');
-		//if($("img.moreIndicator").hasClass("rot90"))
-		//{
-			//$(".moreIndicator").removeClass("rot90");
-			//$(".moreIndicator").addClass("rot270");
-		//}
-		//else
-		//{
-			//$(".moreIndicator").removeClass("rot270");
-			//$(".moreIndicator").addClass("rot90");
-		//}
-//});
-
 
 function GalleryImage(loc, desc, dte, imge) {
 	this.location = loc;
