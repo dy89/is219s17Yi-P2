@@ -20,7 +20,8 @@ body {
 
 .photoHolder {
 	position: relative;
-	width: 80%;
+	height: 394px;
+	width: 520px;
 	margin: 0 auto;
 }
 
@@ -31,14 +32,17 @@ body {
 	position: absolute;
 	z-index: 3;
 	opacity: .8;
-	bottom:10px;
+	bottom:50px;
 }
 
 .thumbnail {
 	position: relative;
 	box-shadow: 1px 3px 20px 0px;
 }
-
+#photo{
+	width: 510px;
+    height: 350px;
+}
 
 .banner {
 	text-align: center;

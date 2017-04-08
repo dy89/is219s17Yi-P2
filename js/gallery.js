@@ -136,6 +136,7 @@ $(document).ready( function() {
 		}
 		
 	});
+	//$('#photo').css({'height' : 518px, 'width': 389px});
 });
 
 window.addEventListener('load', function() {
