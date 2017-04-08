@@ -54,7 +54,6 @@ function swapPhoto() {
 	{
 		mCurrentIndex = 0;
 	}
-	console.log('swap photo');
 }
 
 // Counter for the mImages array
@@ -117,6 +116,25 @@ $(document).ready( function() {
 	$('#nextPhoto').css( {'position':'absolute','right':'0px'});
 	$('#nextPhoto').click(function(){
 		swapPhoto();
+	});
+	$('#prevPhoto').click(function(){
+		document.getElementById("photo").src = mImages[mCurrentIndex].img;
+		var myDetails = document.getElementsByClassName("details");
+		var tempLoc = document.getElementsByClassName("location");
+		tempLoc[0].innerHTML = "Location: " + mImages[mCurrentIndex].location;
+		var tempDesc = document.getElementsByClassName("description");
+		tempDesc[0].innerHTML = "Description: " + mImages[mCurrentIndex].description;
+		var tempDate = document.getElementsByClassName("date");
+		tempDate[0].innerHTML = "Date: " + mImages[mCurrentIndex].date;
+		if(mCurrentIndex <= mImages.length - 1 && mCurrentIndex > 0)
+		{
+			mCurrentIndex--;
+		}
+		else
+		{
+			mCurrentIndex = mImages.length -1;
+		}
+		
 	});
 });
 
