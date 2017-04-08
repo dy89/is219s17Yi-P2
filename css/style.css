@@ -25,13 +25,13 @@ body {
 }
 
 .moreIndicator {
+    left: 45%;
 	height: 50px;
 	width: 50px;
 	position: absolute;
 	z-index: 3;
 	opacity: .8;
-	top: 0px;
-	vertical-align: middle;
+	bottom:10px;
 }
 
 .thumbnail {
