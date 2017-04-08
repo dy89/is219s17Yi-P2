@@ -63,7 +63,6 @@ var mCurrentIndex = 0;
 // XMLHttpRequest variable
 var mRequest = new XMLHttpRequest();
 
-
 // Array holding GalleryImage objects (see below).
 var mImages = [];
 
@@ -81,7 +80,6 @@ mRequest.onreadystatechange = function() {
 				for(var i = 0; i < mJson.images.length; i++){
 				mImages.push(new GalleryImage(mJson.images[i].imgLocation, mJson.images[i].description, mJson.images[i].date, mJson.images[i].imgPath));
 				}
-			console.log(mImages.length);
 			console.log(mJson);
 		} catch(err) {
 			console.log(err.message);
@@ -100,10 +98,20 @@ function makeGalleryImageOnloadCallback(galleryImage) {
 }
 
 $(document).ready( function() {
-	
 	// This initially hides the photos' metadata information
-	$('.details').eq(1).hide();
-	
+	$('.details').eq(0).hide();
+	$('.moreIndicator').click(function(){
+		if($("img.moreIndicator").hasClass("rot90"))
+		{
+			$(".moreIndicator").removeClass("rot90");
+			$(".moreIndicator").addClass("rot270");
+		}
+		else
+		{
+			$(".moreIndicator").removeClass("rot270");
+			$(".moreIndicator").addClass("rot90");
+		}
+	});
 });
 
 window.addEventListener('load', function() {
@@ -111,6 +119,21 @@ window.addEventListener('load', function() {
 	console.log('window loaded');
 
 }, false);
+//$('#prevPhoto').click(function(){
+		//console.log ('Howdy partner');
+		//if($("img.moreIndicator").hasClass("rot90"))
+		//{
+			//$(".moreIndicator").removeClass("rot90");
+			//$(".moreIndicator").addClass("rot270");
+		//}
+		//else
+		//{
+			//$(".moreIndicator").removeClass("rot270");
+			//$(".moreIndicator").addClass("rot90");
+		//}
+//});
+
+
 function GalleryImage(loc, desc, dte, imge) {
 	this.location = loc;
 	this.description = desc;
