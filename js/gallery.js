@@ -114,6 +114,7 @@ $(document).ready( function() {
 		}
 		$('.details').fadeToggle("slow", "linear");
 	});
+	$('#nextPhoto').css( {'position':'absolute','right':'0px'});
 });
 
 window.addEventListener('load', function() {
