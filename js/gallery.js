@@ -115,6 +115,9 @@ $(document).ready( function() {
 		$('.details').fadeToggle("slow", "linear");
 	});
 	$('#nextPhoto').css( {'position':'absolute','right':'0px'});
+	$('#nextPhoto').click(function(){
+		swapPhoto();
+	});
 });
 
 window.addEventListener('load', function() {
