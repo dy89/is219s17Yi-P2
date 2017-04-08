@@ -38,11 +38,14 @@ function swapPhoto() {
 	//with a new image from your images array which is loaded 
 	//from the JSON string
 	var mySlide = document.getElementById("slideshow");
-	var tempImage = mImages[mCurrentIndex].img
-	document.getElementById("photo").src = tempImage;
-	//var myImg = mySlide.getElementbyId("src");
-	//var mySrc = myImg.src;
-	//myImg = tempImage;
+	document.getElementById("photo").src = mImages[mCurrentIndex].img;
+	var myDetails = document.getElementsByClassName("details");
+	var tempLoc = document.getElementsByClassName("location");
+	tempLoc[0].innerHTML = "Location: " + mImages[mCurrentIndex].location;
+	var tempDesc = document.getElementsByClassName("description");
+	tempDesc[0].innerHTML = "Description: " + mImages[mCurrentIndex].description;
+	var tempDate = document.getElementsByClassName("date");
+	tempDate[0].innerHTML = "Date: " + mImages[mCurrentIndex].date;
 	if(mCurrentIndex < mImages.length - 1)
 	{
 		mCurrentIndex++;
@@ -99,7 +102,7 @@ function makeGalleryImageOnloadCallback(galleryImage) {
 $(document).ready( function() {
 	
 	// This initially hides the photos' metadata information
-	$('.details').eq(0).hide();
+	$('.details').eq(1).hide();
 	
 });
 
