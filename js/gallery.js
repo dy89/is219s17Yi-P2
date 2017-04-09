@@ -37,6 +37,14 @@ function swapPhoto() {
 	//Access the img element and replace its source
 	//with a new image from your images array which is loaded 
 	//from the JSON string
+	if(mCurrentIndex < mImages.length - 1)
+	{
+		mCurrentIndex++;
+	}
+	else
+	{
+		mCurrentIndex = 0;
+	}
 	var mySlide = document.getElementById("slideshow");
 	document.getElementById("photo").src = mImages[mCurrentIndex].img;
 	var myDetails = document.getElementsByClassName("details");
@@ -46,14 +54,7 @@ function swapPhoto() {
 	tempDesc[0].innerHTML = "Description: " + mImages[mCurrentIndex].description;
 	var tempDate = document.getElementsByClassName("date");
 	tempDate[0].innerHTML = "Date: " + mImages[mCurrentIndex].date;
-	if(mCurrentIndex < mImages.length - 1)
-	{
-		mCurrentIndex++;
-	}
-	else
-	{
-		mCurrentIndex = 0;
-	}
+	
 }
 
 function getQueryParams(qs) {
@@ -80,10 +81,16 @@ var mJson;
 // URL for the JSON to load by default
 // Some options for you are: images.json, images.short.json; you will need to create your own extra.json later
 var json;
-var mUrl = 'images-short.json';
-var xjhr = 	$.get("index.html", json = 'images.json', function(json) {
-		console.log($_GET[json]);
-	});
+var mUrl
+
+if($_GET['json'] == null)
+{
+	mUrl = 'images-short.json';
+}
+else
+{
+	mUrl = $_GET['json'];
+}
 mRequest.onreadystatechange = function() {
 	if(mRequest.readyState == 4 && mRequest.status == 200){
 		try{
@@ -111,12 +118,6 @@ function makeGalleryImageOnloadCallback(galleryImage) {
 
 $(document).ready( function() {
 	// This initially hides the photos' metadata information
-	//var xjhr = 	$.get("index.html", json = 'images.json', function(json) {
-		//alert("Data: " + json);
-		//mRequest.onreadystatechange();
-		//mRequest.open("GET", json, true);
-		//mRequest.send();
-	//});
 	$('.details').eq(0).hide();
 	$('.moreIndicator').click(function(){
 		if($("img.moreIndicator").hasClass("rot90"))
@@ -134,17 +135,10 @@ $(document).ready( function() {
 	});
 	$('#nextPhoto').css( {'position':'absolute','right':'0px'});
 	$('#nextPhoto').click(function(){
-		swapPhoto();
+		 swapPhoto();
+		
 	});
 	$('#prevPhoto').click(function(){
-		document.getElementById("photo").src = mImages[mCurrentIndex].img;
-		var myDetails = document.getElementsByClassName("details");
-		var tempLoc = document.getElementsByClassName("location");
-		tempLoc[0].innerHTML = "Location: " + mImages[mCurrentIndex].location;
-		var tempDesc = document.getElementsByClassName("description");
-		tempDesc[0].innerHTML = "Description: " + mImages[mCurrentIndex].description;
-		var tempDate = document.getElementsByClassName("date");
-		tempDate[0].innerHTML = "Date: " + mImages[mCurrentIndex].date;
 		if(mCurrentIndex <= mImages.length - 1 && mCurrentIndex > 0)
 		{
 			mCurrentIndex--;
@@ -153,7 +147,14 @@ $(document).ready( function() {
 		{
 			mCurrentIndex = mImages.length -1;
 		}
-		
+		document.getElementById("photo").src = mImages[mCurrentIndex].img;
+		var myDetails = document.getElementsByClassName("details");
+		var tempLoc = document.getElementsByClassName("location");
+		tempLoc[0].innerHTML = "Location: " + mImages[mCurrentIndex].location;
+		var tempDesc = document.getElementsByClassName("description");
+		tempDesc[0].innerHTML = "Description: " + mImages[mCurrentIndex].description;
+		var tempDate = document.getElementsByClassName("date");
+		tempDate[0].innerHTML = "Date: " + mImages[mCurrentIndex].date;
 	});
 });
 
