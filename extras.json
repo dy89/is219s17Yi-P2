@@ -1,0 +1,34 @@
+{
+    "images": [
+        {
+            "imgPath": "img/extras/times_square.jpg",
+            "imgLocation": "New York, New York",
+            "description": "Times Square in New York",
+            "date": "12/07/2005"
+        },
+        {
+            "imgPath": "img/extras/houston_texas.jpg",
+            "imgLocation": "Houston, Texas",
+            "description": "Taken from Downtown Aquarium",
+            "date": "05/04/2014"
+        },
+        {
+            "imgPath": "img/extras/honolulu_hawaii.jpg",
+            "imgLocation": "Honolulu, Hawaii",
+            "description": "Waikiki beach at night",
+            "date": "Circa 2006"
+        },
+        {
+            "imgPath": "img/extras/lombard_sf.jpg",
+            "imgLocation": "San Francisco, California",
+            "description": "Lombard Street taken from Coit Tower",
+            "date": "5/17/2012"
+        },
+    {
+      "imgPath": "img/extras/lasvegas_nevada.jpg",
+      "imgLocation": "Las Vegas, Nevada",
+      "description": "Welcome sign entering the city of Las Vegas",
+      "date": "09/23/2015"
+    }
+  ]
+}

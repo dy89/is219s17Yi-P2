@@ -56,6 +56,15 @@ function swapPhoto() {
 	}
 }
 
+function getQueryParams(qs) {
+ 	qs = qs.split("+").join(" ");
+ 	var params = {}, tokens, re = /[?&]?([^=]+)=([^&]*)/g;
+ 	while (tokens = re.exec(qs)) {
+ 	params[decodeURIComponent(tokens[1])] = decodeURIComponent(tokens[2]);
+ }
+ return params;
+} 
+var $_GET = getQueryParams(document.location.search);
 // Counter for the mImages array
 var mCurrentIndex = 0;
 
@@ -70,7 +79,11 @@ var mJson;
 
 // URL for the JSON to load by default
 // Some options for you are: images.json, images.short.json; you will need to create your own extra.json later
+var json;
 var mUrl = 'images-short.json';
+var xjhr = 	$.get("index.html", json = 'images.json', function(json) {
+		console.log($_GET[json]);
+	});
 mRequest.onreadystatechange = function() {
 	if(mRequest.readyState == 4 && mRequest.status == 200){
 		try{
@@ -98,6 +111,12 @@ function makeGalleryImageOnloadCallback(galleryImage) {
 
 $(document).ready( function() {
 	// This initially hides the photos' metadata information
+	//var xjhr = 	$.get("index.html", json = 'images.json', function(json) {
+		//alert("Data: " + json);
+		//mRequest.onreadystatechange();
+		//mRequest.open("GET", json, true);
+		//mRequest.send();
+	//});
 	$('.details').eq(0).hide();
 	$('.moreIndicator').click(function(){
 		if($("img.moreIndicator").hasClass("rot90"))
@@ -136,7 +155,6 @@ $(document).ready( function() {
 		}
 		
 	});
-	//$('#photo').css({'height' : 518px, 'width': 389px});
 });
 
 window.addEventListener('load', function() {
